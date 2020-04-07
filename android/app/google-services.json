@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "947775412099",
+    "firebase_url": "https://flutter-time-tracker-7564f.firebaseio.com",
+    "project_id": "flutter-time-tracker-7564f",
+    "storage_bucket": "flutter-time-tracker-7564f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:947775412099:android:0b8e6dc28fc4994d9b48b6",
+        "android_client_info": {
+          "package_name": "timetrackerflutter.fluttertimetracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "947775412099-5vjfiaogp4nivp6lpq25f8075eh7r0f7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClerQddgQo_DJIUCfCYiDNcPZ_zGkU4_I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "947775412099-5vjfiaogp4nivp6lpq25f8075eh7r0f7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
