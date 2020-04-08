@@ -1,13 +1,12 @@
+
+
 import 'package:flutter/material.dart';
-import 'package:fluttertimetracker/app/sign_in/validators.dart';
-import 'package:fluttertimetracker/common_widgets/form_submit_button.dart';
-
-import 'package:fluttertimetracker/common_widgets/platform_exception_alert_dialog.dart';
-import 'package:fluttertimetracker/services/auth.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/services.dart';
 
+import '../../common_widgets/platform_exception_alert_dialog.dart';
+import '../../services/auth.dart';
 import 'email_sign_in_model.dart';
+import 'validators.dart';
 
 
 class EmailSignInFormStateful extends StatefulWidget with EmailAndPasswordValidator {
@@ -56,18 +55,6 @@ class _EmailSignInFormState extends State<EmailSignInFormStateful> {
       }
       Navigator.of(context).pop();
     } on PlatformException catch (e) {
-//      print(e.toString());
-//      showDialog(
-//          context: context,
-//          builder: (context) {
-//            return AlertDialog(
-//              title: Text('Sign in Failed'),
-//              content: Text(e.toString()),
-//              actions: [
-//                FlatButton(onPressed: () => Navigator.of(context).pop(), child: Text('OK')),
-//              ],
-//            );
-//          });
       PlatformExceptionAlertDialog(
         title:'Sign in Failed',
         exception: e,

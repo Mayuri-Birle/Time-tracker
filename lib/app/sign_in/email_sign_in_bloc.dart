@@ -1,8 +1,9 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
-import 'package:fluttertimetracker/app/sign_in/email_sign_in_model.dart';
-import 'package:fluttertimetracker/services/auth.dart';
+import 'package:flutter/foundation.dart';
+
+import '../../services/auth.dart';
+import 'email_sign_in_model.dart';
 
 class EmailSignInBloc {
   EmailSignInBloc({@required this.auth});
