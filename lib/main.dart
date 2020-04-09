@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Provider<AuthBase>(
+      // ignore: deprecated_member_use
       builder: (context) => Auth(),
       child: MaterialApp(
         title: 'Time Tracker',

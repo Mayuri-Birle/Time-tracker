@@ -7,7 +7,6 @@ import '../../common_widgets/platform_exception_alert_dialog.dart';
 import '../../services/auth.dart';
 import 'email_sign_in_change_model .dart';
 
-// import 'email_sign_in_model.dart';
 class EmailSignInFormChangeNotifier extends StatefulWidget {
   EmailSignInFormChangeNotifier({@required this.model});
   final EmailSignInChangeModel model;
@@ -25,15 +24,21 @@ class EmailSignInFormChangeNotifier extends StatefulWidget {
   }
 
   @override
-  _EmailSignInFormState createState() => _EmailSignInFormState();
+  _EmailSignInFormChangeNotifierState createState() =>
+      _EmailSignInFormChangeNotifierState();
 }
 
-class _EmailSignInFormState extends State<EmailSignInFormChangeNotifier> {
+class _EmailSignInFormChangeNotifierState
+    extends State<EmailSignInFormChangeNotifier> {
   final TextEditingController _emailController = TextEditingController();
+
   final TextEditingController _passwordController = TextEditingController();
+
   final FocusNode _emailFocusNode = FocusNode();
+
   final FocusNode _passwordFocusNode = FocusNode();
-  EmailSignInChangeModel get model => model;
+
+  EmailSignInChangeModel get model => widget.model;
 
   @override
   void dispose() {
@@ -50,15 +55,13 @@ class _EmailSignInFormState extends State<EmailSignInFormChangeNotifier> {
       Navigator.of(context).pop();
     } on PlatformException catch (e) {
       PlatformExceptionAlertDialog(
-        title: 'Sign in Failed',
+        title: 'Sign in failed',
         exception: e,
-//        defaultActionText: 'OK',
       ).show(context);
     }
   }
 
   void _emailEditingComplete() {
-//    print('email editing complete');
     final newFocus = model.emailValidator.isValid(model.email)
         ? _passwordFocusNode
         : _emailFocusNode;
@@ -83,8 +86,8 @@ class _EmailSignInFormState extends State<EmailSignInFormChangeNotifier> {
       ),
       SizedBox(height: 8.0),
       FlatButton(
-        onPressed: !model.isLoading ? _toggleFormType : null,
         child: Text(model.secondaryButtonText),
+        onPressed: !model.isLoading ? _toggleFormType : null,
       ),
     ];
   }
@@ -115,7 +118,6 @@ class _EmailSignInFormState extends State<EmailSignInFormChangeNotifier> {
         errorText: model.emailErrorText,
         enabled: model.isLoading == false,
       ),
-//        onChanged: (value) => email = value,
       autocorrect: false,
       keyboardType: TextInputType.emailAddress,
       textInputAction: TextInputAction.next,

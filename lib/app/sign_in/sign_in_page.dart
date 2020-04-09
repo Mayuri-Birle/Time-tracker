@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertimetracker/app/sign_in/email_sign_in_page.dart';
@@ -18,7 +18,8 @@ class SignInPage extends StatelessWidget {
 
   static Widget create(BuildContext context) {
     final auth = Provider.of<AuthBase>(context);
-    return ChangeNotifierProvider<ValueNotifier<bool>>(
+    var changeNotifierProvider = ChangeNotifierProvider<ValueNotifier<bool>>(
+      //// ignore: deprecated_member_use
       builder: (_) => ValueNotifier<bool>(false),
       child: Consumer<ValueNotifier<bool>>(
         builder: (_, isLoading, __) => Provider<SignInManager>(
@@ -31,6 +32,7 @@ class SignInPage extends StatelessWidget {
         ),
       ),
     );
+    return changeNotifierProvider;
   }
 
   void _showSignInError(BuildContext context, PlatformException exception) {

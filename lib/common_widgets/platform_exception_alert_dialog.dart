@@ -13,6 +13,10 @@ class PlatformExceptionAlertDialog extends PlatformAlertDialog{
   );
 
   static String _message(PlatformException exception){
+    print(exception);
+      // if (exception.message=='Error performing setData'){
+      //   if(exception.code=='Error performing setData')
+      // }
     return _errors[exception.code] ?? exception.message;
   }
 
