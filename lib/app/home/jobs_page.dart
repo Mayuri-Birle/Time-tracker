@@ -47,24 +47,46 @@ class JobsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final database = Provider.of<Database>(context);
-    database.readJobs();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Jobs', textAlign: TextAlign.center),
+        title: Text('Jobs'),
         actions: <Widget>[
           FlatButton(
             child: Text(
               'Logout',
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white, fontSize: 18.0),
+              style: TextStyle(
+                fontSize: 18.0,
+                color: Colors.white,
+              ),
             ),
             onPressed: () => _confirmSignOut(context),
-          )
+          ),
         ],
       ),
+      body: _buildContents(context),
       floatingActionButton: FloatingActionButton(
-          onPressed: () => _createJob(context), child: Icon(Icons.add)),
+        child: Icon(Icons.add),
+        onPressed: () => _createJob(context),
+      ),
     );
   }
+
+  Widget _buildContents(BuildContext context) {
+    final database = Provider.of<Database>(context);
+    return StreamBuilder<List<Job>>(
+      stream: database.jobsStream(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          final jobs = snapshot.data;
+          final children = jobs.map((job) => Text(job.name)).toList();
+          return ListView(children: children);
+        }
+        if (snapshot.hasError) {
+          return Center(child: Text('Some error occurred'));
+        }
+        return Center(child: CircularProgressIndicator());
+      },
+    );
+  }
+
 }
