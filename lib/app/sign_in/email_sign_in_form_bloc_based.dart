@@ -13,7 +13,6 @@ class EmailSignInFormBlocBased extends StatefulWidget {
  static Widget create(BuildContext context){
    final AuthBase auth = Provider.of<AuthBase>(context);
    return Provider<EmailSignInBloc>(
-     // ignore: deprecated_member_use
      builder: (context) => EmailSignInBloc(auth: auth),
      child: Consumer<EmailSignInBloc>(
        builder: (context, bloc, _) => EmailSignInFormBlocBased(bloc: bloc,),
